@@ -111,6 +111,7 @@ public class UUIDControlImpl implements UUIDControl, Listener {
             Log.info("[UUIDControl] Found " + playerToIDs.size() + " different Playernames.");
         } catch (SQLException e) {
             Log.severe("[UUIDControl] Failed to get all users. SlapHomebrew cannot function without this. Shutting down.");
+            Log.severe("[UUIDControl] Exception: " + e.getMessage());
         } finally {
             SlapPlayers.getSQLPool().returnConnection(con);
         }

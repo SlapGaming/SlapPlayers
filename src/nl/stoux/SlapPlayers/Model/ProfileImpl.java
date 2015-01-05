@@ -84,7 +84,7 @@ public class ProfileImpl implements Profile {
      * @param names the names
      */
     public void addNames(Collection<Name> names) {
-        names.addAll(names);
+        this.names.addAll(names);
         sortNames();
     }
 
