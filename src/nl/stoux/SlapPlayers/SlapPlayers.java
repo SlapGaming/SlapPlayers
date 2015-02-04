@@ -2,16 +2,21 @@ package nl.stoux.SlapPlayers;
 
 import nl.stoux.SlapPlayers.Control.UUIDControl;
 import nl.stoux.SlapPlayers.Control.UUIDControlImpl;
+import nl.stoux.SlapPlayers.Model.NameImpl;
+import nl.stoux.SlapPlayers.SQL.DaoControl;
 import nl.stoux.SlapPlayers.Util.Log;
 import nl.stoux.SlapPlayers.Util.SQLPool;
 import nl.stoux.SlapPlayers.Util.SQLPoolImpl;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.lang.annotation.Annotation;
 
 /**
  * Created by Stoux on 05/01/2015.
  */
-public class SlapPlayers extends JavaPlugin {
+public class SlapPlayers extends JavaPlugin implements Listener {
 
     //Singleton
     private static SlapPlayers instance;
@@ -30,6 +35,8 @@ public class SlapPlayers extends JavaPlugin {
         instance = this;
         Log.intialize(getLogger());
 
+        getServer().getPluginManager().registerEvents(this, this);
+
         //Create SQL Pool
         FileConfiguration config = getConfig();
         String host = config.getString("sql.host");
@@ -38,6 +45,9 @@ public class SlapPlayers extends JavaPlugin {
         String user = config.getString("sql.user");
         String pass = config.getString("sql.password");
         sqlPool = new SQLPoolImpl(this, host, port, db, user, pass);
+
+        //Register with DaoControl
+        DaoControl.registerTables(getClass().getPackage().toString());
 
         //Create the UUIDController
         uuidControl = new UUIDControlImpl(this);
@@ -66,6 +76,5 @@ public class SlapPlayers extends JavaPlugin {
     public static UUIDControl getUUIDController() {
         return instance.uuidControl;
     }
-
 
 }

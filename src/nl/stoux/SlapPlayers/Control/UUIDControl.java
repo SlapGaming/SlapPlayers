@@ -13,7 +13,7 @@ public interface UUIDControl {
 
     /**
      * Get a player's UUIDProfile based on their UUID
-     * @param UUID the UUID
+     * @param uuid the UUID
      * @return the profile or null
      */
     public Profile getProfile(UUID uuid);

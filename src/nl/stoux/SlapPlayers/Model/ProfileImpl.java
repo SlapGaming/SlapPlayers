@@ -1,5 +1,8 @@
 package nl.stoux.SlapPlayers.Model;
 
+import lombok.NoArgsConstructor;
+import nl.stoux.SlapPlayers.SQL.Annotations.Column;
+import nl.stoux.SlapPlayers.SQL.Annotations.Table;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -8,14 +11,19 @@ import java.util.*;
 /**
  * Created by Stoux on 05/01/2015.
  */
+@Table(name = "sh_user")
+@NoArgsConstructor
 public class ProfileImpl implements Profile {
 
+    @Column(name = "user_id", autoIncrementID = true)
     private int id;
+
+    @Column(name = "UUID")
     private String uuid;
 
     //The list of names, in the order that they are being used.
     //names[0] will be the current one. names[1] will be their previous name, etc..
-    private List<Name> names;
+    private List<Name> names = new ArrayList<>();
 
     /**
      * Create a new UUID Profile
@@ -25,7 +33,10 @@ public class ProfileImpl implements Profile {
     public ProfileImpl(int id, String uuid) {
         this.id = id;
         this.uuid = uuid;
-        names = new ArrayList<>();
+    }
+
+    public ProfileImpl(String uuid) {
+        this.uuid = uuid;
     }
 
     @Override
