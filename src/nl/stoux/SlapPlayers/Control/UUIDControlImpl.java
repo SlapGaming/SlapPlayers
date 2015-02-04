@@ -107,6 +107,7 @@ public class UUIDControlImpl implements UUIDControl, Listener {
                 final NameImpl newName = new NameImpl(profile.getID(), playername, loginTime);
                 //Add it to the maps
                 playerToIDs.put(p.getName().toLowerCase(), profile.getID());
+                profile.addName(newName);
 
                 //Store the new name
                 plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
