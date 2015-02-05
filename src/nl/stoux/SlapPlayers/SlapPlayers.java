@@ -47,7 +47,7 @@ public class SlapPlayers extends JavaPlugin implements Listener {
         sqlPool = new SQLPoolImpl(this, host, port, db, user, pass);
 
         //Register with DaoControl
-        DaoControl.registerTables(getClass().getPackage().toString());
+        DaoControl.registerTables(getClass());
 
         //Create the UUIDController
         uuidControl = new UUIDControlImpl(this);

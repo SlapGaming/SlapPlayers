@@ -35,17 +35,13 @@ public class DaoControl {
 
     /**
      * Register tables in a package
-     * @param mPackage The package
+     * @param classInPackage The class in the package
      */
-    public static void registerTables(String mPackage) {
-        //Remove possible "package"
-        mPackage = mPackage.replace("package ", "");
-
+    //TODO Reflect doesn't behave the way I expected. It also takes the super package. So if you pass "nl.stoux.Package" it will actually search through "nl.stoux"... I think...
+    public static void registerTables(Class<?> classInPackage) {
         //Create the Reflections scanner
-        Reflections r = new Reflections(ClasspathHelper.forPackage(mPackage));
-        Log.info("[DAO] Registering tables for package: '" + mPackage + "'");
-
-        System.out.println(r.getFieldsAnnotatedWith(Column.class).size());
+        Reflections r = ReflectionUtil.reflectPackage(classInPackage);
+        Log.info("[DAO] Registering tables for package: '" + classInPackage.getPackage().getName() + "'");
 
         //Find the tables
         Set<Class<?>> classes = r.getTypesAnnotatedWith(Table.class);
