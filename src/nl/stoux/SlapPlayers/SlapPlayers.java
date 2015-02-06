@@ -1,5 +1,6 @@
 package nl.stoux.SlapPlayers;
 
+import nl.stoux.SlapPlayers.ConfigConvert.ConvertCommand;
 import nl.stoux.SlapPlayers.Control.UUIDControl;
 import nl.stoux.SlapPlayers.Control.UUIDControlImpl;
 import nl.stoux.SlapPlayers.Model.NameImpl;
@@ -20,6 +21,10 @@ public class SlapPlayers extends JavaPlugin implements Listener {
 
     //Singleton
     private static SlapPlayers instance;
+
+    public static SlapPlayers getInstance() {
+        return instance;
+    }
 
     /** The SQLPool */
     private SQLPoolImpl sqlPool;
@@ -51,6 +56,9 @@ public class SlapPlayers extends JavaPlugin implements Listener {
 
         //Create the UUIDController
         uuidControl = new UUIDControlImpl(this);
+
+        //Set command executors
+        getCommand("convertyml").setExecutor(new ConvertCommand());
     }
 
     @Override

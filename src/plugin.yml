@@ -1,5 +1,11 @@
 name: SlapPlayers
 main: nl.stoux.SlapPlayers.SlapPlayers
 authors: [Stoux2]
-version: 2.0.2
+version: 2.1.0
 description: A core plugin for SlapHomebrew plugins. This plugin keeps track of all player names and their UUIDs.
+
+commands:
+  convertyml:
+    description: Convert the playernames in a YML file to UUIDs
+    usage: "Usage: /convertyml path/to/folder/ filenameWithoutYML excludedKeys..."
+    permission: "slapplayers.convertyml"
