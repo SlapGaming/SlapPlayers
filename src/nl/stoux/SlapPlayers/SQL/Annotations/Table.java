@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
 public @interface Table {
 
     /** The name of the table */
-    String name();
+    String value();
 
 }

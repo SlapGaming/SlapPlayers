@@ -7,15 +7,15 @@ import nl.stoux.SlapPlayers.SQL.Annotations.Table;
 /**
  * Created by Stoux on 05/01/2015.
  */
-@Table(name = "sh_names")
+@Table("sh_names")
 @NoArgsConstructor
 public class NameImpl implements Name {
 
-    @Column(name = "user_id")
+    @Column("user_id")
     private int profileID;
-    @Column(name = "name")
+    @Column("name")
     private String playername;
-    @Column(name = "known_since")
+    @Column("known_since")
     private Long knownSince;
 
     public NameImpl(int profileID, String playername, long knownSince) {

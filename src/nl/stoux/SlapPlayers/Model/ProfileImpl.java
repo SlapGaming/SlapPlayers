@@ -11,18 +11,18 @@ import java.util.*;
 /**
  * Created by Stoux on 05/01/2015.
  */
-@Table(name = "sh_user")
+@Table("sh_user")
 @NoArgsConstructor
 public class ProfileImpl implements Profile {
 
-    @Column(name = "user_id", autoIncrementID = true)
+    @Column(value = "user_id", autoIncrementID = true)
     private int id;
 
-    @Column(name = "UUID")
+    @Column("UUID")
     private String uuid;
 
     //The list of names, in the order that they are being used.
-    //names[0] will be the current one. names[1] will be their previous name, etc..
+    //names[0] will be the current one. names[1] will be their previous value, etc..
     private List<Name> names = new ArrayList<>();
 
     /**
@@ -80,7 +80,7 @@ public class ProfileImpl implements Profile {
     }
 
     /**
-     * Add a name to the Profile
+     * Add a value to the Profile
      * @param name One or more names
      */
     public void addName(Name... name) {

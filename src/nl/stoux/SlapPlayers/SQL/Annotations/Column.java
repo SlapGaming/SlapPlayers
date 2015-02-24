@@ -17,7 +17,7 @@ public @interface Column {
      * If no value is given it will take the name of the attribute field in the class
      * @return the name
      */
-    String name() default "";
+    String value() default "";
 
     /**
      * This is a value that auto increments

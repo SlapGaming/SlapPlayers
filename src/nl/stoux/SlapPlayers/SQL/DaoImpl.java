@@ -85,7 +85,7 @@ public class DaoImpl<T extends Object> implements Dao<T> {
             try {
                 value = filteredFields.get(i).getField().get(entry);
                 if (value == null) {
-                    prep.setNull(i + 1, Types.VARCHAR); //TODO
+                    prep.setNull(i + 1, Types.VARCHAR); //TODO Select correct Type
                 } else {
                     prep.setObject(i + 1, value);
                 }

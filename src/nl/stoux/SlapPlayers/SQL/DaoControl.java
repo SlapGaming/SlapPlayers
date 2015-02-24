@@ -1,6 +1,5 @@
 package nl.stoux.SlapPlayers.SQL;
 
-import nl.stoux.SlapPlayers.Model.Name;
 import nl.stoux.SlapPlayers.SQL.Annotations.Column;
 import nl.stoux.SlapPlayers.SQL.Annotations.Table;
 import nl.stoux.SlapPlayers.SQL.Model.ColumnField;
@@ -10,8 +9,6 @@ import nl.stoux.SlapPlayers.Util.Log;
 import nl.stoux.SlapPlayers.Util.ReflectionUtil;
 import nl.stoux.SlapPlayers.Util.SUtil;
 import org.reflections.Reflections;
-import org.reflections.scanners.TypeAnnotationsScanner;
-import org.reflections.util.ClasspathHelper;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -51,7 +48,7 @@ public class DaoControl {
 
             //Create the new FoundTable
             FullTable foundTable = new FullTable();
-            foundTable.setName(aClass.getAnnotation(Table.class).name());
+            foundTable.setName(aClass.getAnnotation(Table.class).value());
 
             //Create map with columns
             List<ColumnField> fields = new ArrayList<>();
@@ -64,7 +61,7 @@ public class DaoControl {
                 cField.setAutoIncrement(colAnn.autoIncrementID());
 
                 //Check if name is set
-                String name = colAnn.name();
+                String name = colAnn.value();
                 if (name.equals("")) {
                     //Use name of param
                     name = column.getName();
