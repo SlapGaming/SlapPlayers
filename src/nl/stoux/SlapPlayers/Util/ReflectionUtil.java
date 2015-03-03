@@ -1,7 +1,12 @@
 package nl.stoux.SlapPlayers.Util;
 
 import org.reflections.Reflections;
+import org.reflections.scanners.FieldAnnotationsScanner;
+import org.reflections.scanners.MethodAnnotationsScanner;
+import org.reflections.scanners.SubTypesScanner;
+import org.reflections.scanners.TypeAnnotationsScanner;
 import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -20,10 +25,10 @@ public class ReflectionUtil {
      * @return the reflections instance
      */
     public static Reflections reflectPackage(Class<?> classInPackage) {
-        return new Reflections(
-                ClasspathHelper.forPackage(classInPackage.getPackage().toString().replace("package ", "")),
-                classInPackage.getClassLoader()
-        );
+        ConfigurationBuilder configBuilder = new ConfigurationBuilder();
+        configBuilder.setUrls(ClasspathHelper.forManifest(ClasspathHelper.forClassLoader(classInPackage.getClassLoader())));
+        configBuilder.addScanners(new SubTypesScanner(), new FieldAnnotationsScanner(), new MethodAnnotationsScanner(), new TypeAnnotationsScanner());
+        return configBuilder.build();
     }
 
     /**
