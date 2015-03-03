@@ -1,4 +1,4 @@
-package nl.stoux.SlapPlayers.SQL;
+package nl.stoux.SlapPlayers.SQL.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

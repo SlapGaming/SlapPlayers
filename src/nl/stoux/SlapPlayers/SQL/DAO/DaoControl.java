@@ -1,4 +1,4 @@
-package nl.stoux.SlapPlayers.SQL;
+package nl.stoux.SlapPlayers.SQL.DAO;
 
 import nl.stoux.SlapPlayers.SQL.Annotations.Column;
 import nl.stoux.SlapPlayers.SQL.Annotations.Table;

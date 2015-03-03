@@ -3,17 +3,14 @@ package nl.stoux.SlapPlayers;
 import nl.stoux.SlapPlayers.ConfigConvert.ConvertCommand;
 import nl.stoux.SlapPlayers.Control.UUIDControl;
 import nl.stoux.SlapPlayers.Control.UUIDControlImpl;
-import nl.stoux.SlapPlayers.Model.NameImpl;
-import nl.stoux.SlapPlayers.SQL.DaoControl;
+import nl.stoux.SlapPlayers.SQL.DAO.DaoControl;
 import nl.stoux.SlapPlayers.Util.DateUtil;
 import nl.stoux.SlapPlayers.Util.Log;
-import nl.stoux.SlapPlayers.Util.SQLPool;
-import nl.stoux.SlapPlayers.Util.SQLPoolImpl;
+import nl.stoux.SlapPlayers.SQL.Pool.SQLPool;
+import nl.stoux.SlapPlayers.SQL.Pool.SQLPoolImpl;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.lang.annotation.Annotation;
 
 /**
  * Created by Stoux on 05/01/2015.

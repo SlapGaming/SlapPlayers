@@ -1,4 +1,4 @@
-package nl.stoux.SlapPlayers.Util;
+package nl.stoux.SlapPlayers.SQL.Pool;
 
 import java.sql.Connection;
 

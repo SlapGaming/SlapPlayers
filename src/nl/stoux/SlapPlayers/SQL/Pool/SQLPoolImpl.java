@@ -1,4 +1,4 @@
-package nl.stoux.SlapPlayers.Util;
+package nl.stoux.SlapPlayers.SQL.Pool;
 
 /**
  * Created by Stoux on 05/01/2015.

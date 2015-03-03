@@ -1,4 +1,4 @@
-package nl.stoux.SlapPlayers.SQL;
+package nl.stoux.SlapPlayers.SQL.DAO;
 
 import nl.stoux.SlapPlayers.SQL.Model.ColumnField;
 import nl.stoux.SlapPlayers.SQL.Model.FullTable;
@@ -7,14 +7,9 @@ import nl.stoux.SlapPlayers.SlapPlayers;
 import nl.stoux.SlapPlayers.Util.Log;
 import nl.stoux.SlapPlayers.Util.SUtil;
 
-import java.lang.reflect.Field;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
