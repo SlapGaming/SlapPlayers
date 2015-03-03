@@ -5,6 +5,7 @@ import nl.stoux.SlapPlayers.Control.UUIDControl;
 import nl.stoux.SlapPlayers.Control.UUIDControlImpl;
 import nl.stoux.SlapPlayers.Model.NameImpl;
 import nl.stoux.SlapPlayers.SQL.DaoControl;
+import nl.stoux.SlapPlayers.Util.DateUtil;
 import nl.stoux.SlapPlayers.Util.Log;
 import nl.stoux.SlapPlayers.Util.SQLPool;
 import nl.stoux.SlapPlayers.Util.SQLPoolImpl;
@@ -39,6 +40,7 @@ public class SlapPlayers extends JavaPlugin implements Listener {
         //Initialze statics
         instance = this;
         Log.intialize(getLogger());
+        DateUtil.initialize();
 
         getServer().getPluginManager().registerEvents(this, this);
 
@@ -67,6 +69,11 @@ public class SlapPlayers extends JavaPlugin implements Listener {
 
         //Shut down the SQLPool
         sqlPool.shutdown();
+
+        //Remove statics
+        instance = null;
+        Log.shutdown();
+        DateUtil.destruct();
     }
 
     /**
